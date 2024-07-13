@@ -3,7 +3,7 @@ package med.voll.api.medico;
 public enum Especialidade {
 
     ORTOPEDIA,
-    CARDOILOGIA,
+    CARDIOLOGIA,
     GINECOLOGIA,
     DERMATOLOGIA;
 }
