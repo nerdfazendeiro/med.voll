@@ -36,4 +36,33 @@ public class Endereco {
         this.numero = dados.numero();
         this.complemento = dados.complemento();
     }
+
+    /*
+    * Método que verifica qual dos campos serão atualizados,
+    * para que nenhum campo com preenchimentos obrigatorio
+    * seja atualizado com "null";
+    * */
+    public void atualizarInformacoes(DadosEndereco endereco) {
+        if (endereco.logradouro() != null){
+            this.logradouro = endereco.logradouro();
+        }
+        if (endereco.bairro() != null){
+            this.bairro = endereco.bairro();
+        }
+        if (endereco.cep() != null){
+            this.cep = endereco.cep();
+        }
+        if (endereco.cidade() != null){
+            this.cidade = endereco.cidade();
+        }
+        if (endereco.uf() != null){
+            this.uf = endereco.uf();
+        }
+        if (endereco.numero() != null){
+            this.numero = endereco.numero();
+        }
+        if (endereco.complemento() != null){
+            this.complemento = endereco.complemento();
+        }
+    }
 }
