@@ -23,7 +23,7 @@ public class MedicoController {
     private MedicoRepository repository;
 
     @PostMapping
-    @Transactional
+    @Transactional //Garantir que transação só seja confirmada, se for bem sucedidas
     public void cadastrar(@RequestBody @Valid DadosCadastroMedico dados){
         repository.save(new Medico(dados));
     }
@@ -31,5 +31,11 @@ public class MedicoController {
     @GetMapping
     public Page<DadosListagemMedico> listar(@PageableDefault(size = 10, sort ={"nome"}) Pageable paginacao){
         return repository.findAll(paginacao).map(DadosListagemMedico::new);
+    }
+
+    @PutMapping
+    @Transactional //Garantir que transação só seja confirmada, se for bem sucedidas
+    public void atualizar(){
+
     }
 }
