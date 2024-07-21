@@ -1,15 +1,13 @@
 package med.voll.api.paciente;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import med.voll.api.endereco.Endereco;
 @Table(name = "pacientes")
 @Entity(name = "Paciente")
 @Getter // O Lombok vai cuidar de Criar os Getters e Setters e o Construtor
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Paciente {
