@@ -39,4 +39,16 @@ public class PacienteController {
         var paciente = repository.getReferenceById(dados.id());
         paciente.atualizarInformacoes(dados);
     }
+
+    /*
+    * Criação do endpoint DELETE
+    * Que no caso irá somente desativar o médico, mas o registro continuará no banco
+    * a fim de não gerar problemas em relátorios antigos;
+    * */
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id){
+        var paciente = repository.getReferenceById(id);
+        paciente.excluir();
+    }
 }
