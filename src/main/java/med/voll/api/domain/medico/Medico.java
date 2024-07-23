@@ -1,16 +1,18 @@
-package med.voll.api.paciente;
+package med.voll.api.domain.medico;
 
 import jakarta.persistence.*;
 import lombok.*;
-import med.voll.api.endereco.Endereco;
-@Table(name = "pacientes")
-@Entity(name = "Paciente")
-@Getter // O Lombok vai cuidar de Criar os Getters e Setters e o Construtor
+import med.voll.api.domain.endereco.Endereco;
+
+@Table(name = "medicos")
+@Entity(name = "Medico")
+//Usando o Lombok, para criar o construtor, getters e setters, EqualsAndHashCode
+@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Paciente {
+public class Medico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,23 +20,27 @@ public class Paciente {
     private String nome;
     private String email;
     private String telefone;
-    private String cpf;
+    private String crm;
+
+    @Enumerated(EnumType.STRING)
+    private Especialidade especialidade;
 
     @Embedded
     private Endereco endereco;
 
     private Boolean ativo;
 
-    public Paciente(DadosCadastroPaciente dados){
+    public Medico(DadosCadastroMedico dados) {
         this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
-        this.cpf = dados.cpf();
         this.telefone = dados.telefone();
+        this.crm = dados.crm();
+        this.especialidade = dados.especialidade();
         this.endereco = new Endereco(dados.endereco());
     }
 
-    public void atualizarInformacoes(DadosAtualizacaoPaciente dados) {
+    public void atualizarInformacoes(DadosAtualizacaoMedico dados) {
         if (dados.nome() != null){
             this.nome = dados.nome();
         }
